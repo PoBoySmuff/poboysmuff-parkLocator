@@ -22,7 +22,7 @@ function getParks(query, maxResults) {
     const options = {
         method: 'GET',
         'Access-Control-Allow-Credentials': true,
-        'Access-Control-Allow-Origin': true,
+        'Access-Control-Allow-Origin': '*',
         headers: new Headers({
             'X-Api-Key': apiKey,
             'Content-Type': 'application/json'
