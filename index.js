@@ -12,7 +12,6 @@ function formatQueryParams(params) {
 function getParks(query, maxResults) {
     const params = {
         stateCode: query,
-        language: 'en',
         limit: maxResults
     };
 
@@ -21,15 +20,18 @@ function getParks(query, maxResults) {
     console.log(url);
 
     const options = {
+        method: 'GET',
+        'Access-Control-Allow-Credentials': true,
+        'Access-Control-Allow-Origin': true,
         headers: new Headers({
             'X-Api-Key': apiKey,
-            'Access-Control-Request-Method': 'GET',
-            'Origin': 'https://developer.nps.gov/api/v1/parks',
-            'Access-Control-Request-Headers': 'Content-Type'
+            'Content-Type': 'application/json'
+
+            
         })/* Need to figure out CORS headers*/
     };
 
-    fetch(url, options)
+    fetch(url,options)
         .then(response => {
             if (response.ok) {
                 return response.json();
