@@ -20,12 +20,8 @@ function getParks(query, maxResults) {
     console.log(url);
 
     const options = {
-        method: 'GET',
-        'Access-Control-Allow-Credentials': true,
-        'Access-Control-Allow-Origin': '*',
         headers: new Headers({
             'X-Api-Key': apiKey,
-            'Content-Type': 'application/json'
 
             
         })/* Need to figure out CORS headers*/
