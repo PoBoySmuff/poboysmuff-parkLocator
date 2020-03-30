@@ -21,13 +21,13 @@ function getParks(query, maxResults) {
 
     const options = {
         headers: new Headers({
-            'X-Api-Key': apiKey,
+            'X-Api-Key': apiKey
 
             
         })/* Need to figure out CORS headers*/
     };
-
-    fetch(url,options)
+    console.log(url);
+    fetch(("https://cors-anywhere.herokuapp.com/"+url),options)
         .then(response => {
             if (response.ok) {
                 return response.json();
@@ -42,7 +42,15 @@ function getParks(query, maxResults) {
 
 function displayResults(responseJson) {
     console.log(responseJson);
-}
+    $('#results-list').empty();
+    $('#js-error-message').empty();
+    for (let i=0; i<responseJson.limit && i<responseJson.data.length; i++) {
+        $('#results-list').append(`
+        <li><h3><a href=${responseJson.data[i].url}>${responseJson.data[i].fullName}</a></h3>
+        <p>${responseJson.data[i].description}</p></li>`)
+    };
+    $('#results').removeClass('hidden');
+};
 
 function watchForm() {
     $('#js-form').submit(event => {
