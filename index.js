@@ -49,6 +49,10 @@ function displayResults(responseJson) {
         <li><h3><a href=${responseJson.data[i].url}>${responseJson.data[i].fullName}</a></h3>
         <p>${responseJson.data[i].description}</p></li>`)
     };
+    if (responseJson.data.length === 0) {
+        $('#results-list').append(`
+        <li><p>No results found</p></li>`);
+    }
     $('#results').removeClass('hidden');
 };
 
